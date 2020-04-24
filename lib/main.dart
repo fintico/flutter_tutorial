@@ -5,19 +5,19 @@ void main() => runApp(MyApp());
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return MyAppState();
+    return _MyAppState();
   }
 
 }
 
-class MyAppState extends State<MyApp> {
-  int questionIndex = 0;
+class _MyAppState extends State<MyApp> {
+  int _questionIndex = 0;
 
-  void myAnswerQuestion() {
+  void _myAnswerQuestion() {
     setState(() {
-      questionIndex = questionIndex + 1;
+      _questionIndex = _questionIndex + 1;
     });
-    print(questionIndex);
+    print(_questionIndex);
   }
 
   // This widget is the root of your application.
@@ -32,10 +32,10 @@ class MyAppState extends State<MyApp> {
           appBar: AppBar(title: Text('Flutter Tutorial')),
           body: Column(
             children: <Widget>[
-              Text(questions[questionIndex]),
+              Text(questions[_questionIndex]),
               RaisedButton(
                 child: Text('Answer 1'),
-                onPressed: myAnswerQuestion,
+                onPressed: _myAnswerQuestion,
               ),
               RaisedButton(
                 child: Text('Answer 2'),
