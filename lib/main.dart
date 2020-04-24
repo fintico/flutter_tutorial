@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tutorial/answer.dart';
+import 'question.dart';
 
 void main() => runApp(MyApp());
 
@@ -7,7 +9,6 @@ class MyApp extends StatefulWidget {
   State<StatefulWidget> createState() {
     return _MyAppState();
   }
-
 }
 
 class _MyAppState extends State<MyApp> {
@@ -24,32 +25,20 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     var questions = [
-      'What\'s your favorite color',
-      'What\'s you favorite animal',
+      'What\'s your favorite color?',
+      'What\'s you favorite animal?',
     ];
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(title: Text('Flutter Tutorial')),
           body: Column(
             children: <Widget>[
-              Text(questions[_questionIndex]),
-              RaisedButton(
-                child: Text('Answer 1'),
-                onPressed: _myAnswerQuestion,
-              ),
-              RaisedButton(
-                child: Text('Answer 2'),
-                onPressed: () => print('Answer 2 chosen!'),
-              ),
-              RaisedButton(
-                child: Text('Answer 3'),
-                onPressed: () {
-                  //codigo necesario
-                  print('Answer 3 chosen! ');
-                },
-              ),
+              Question(questions[_questionIndex]),
+              Answer(_myAnswerQuestion),
+              Answer(_myAnswerQuestion),
+              Answer(_myAnswerQuestion),
             ],
           )),
     );
-}
+  }
 }
