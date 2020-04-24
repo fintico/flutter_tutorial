@@ -2,10 +2,24 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  void myAnswerQuestion(){
-    print('Answer 1 chosen!');
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return MyAppState();
   }
+
+}
+
+class MyAppState extends State<MyApp> {
+  int questionIndex = 0;
+
+  void myAnswerQuestion() {
+    setState(() {
+      questionIndex = questionIndex + 1;
+    });
+    print(questionIndex);
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -18,13 +32,22 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(title: Text('Flutter Tutorial')),
           body: Column(
             children: <Widget>[
-              Text('My Questions'),
-              RaisedButton(child: Text('Answer 1'), onPressed: myAnswerQuestion,),
-              RaisedButton(child: Text('Answer 2'), onPressed: () => print('Answer 2 chosen!'),),
-              RaisedButton(child: Text('Answer 3'), onPressed: (){
-                //codigo necesario
-                print('Answer 3 chosen!');
-              },),
+              Text(questions[questionIndex]),
+              RaisedButton(
+                child: Text('Answer 1'),
+                onPressed: myAnswerQuestion,
+              ),
+              RaisedButton(
+                child: Text('Answer 2'),
+                onPressed: () => print('Answer 2 chosen!'),
+              ),
+              RaisedButton(
+                child: Text('Answer 3'),
+                onPressed: () {
+                  //codigo necesario
+                  print('Answer 3 chosen! ');
+                },
+              ),
             ],
           )),
     );
