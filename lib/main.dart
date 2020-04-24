@@ -25,8 +25,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     var questions = [
-      'What\'s your favorite color',
-      'What\'s you favorite animal',
+      'What\'s your favorite color?',
+      'What\'s you favorite animal?',
     ];
     return MaterialApp(
       home: Scaffold(
@@ -34,9 +34,9 @@ class _MyAppState extends State<MyApp> {
           body: Column(
             children: <Widget>[
               Question(questions[_questionIndex]),
-              Answer(),
-              Answer(),
-              Answer(),
+              Answer(_myAnswerQuestion),
+              Answer(_myAnswerQuestion),
+              Answer(_myAnswerQuestion),
             ],
           )),
     );
