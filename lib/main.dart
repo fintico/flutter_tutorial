@@ -25,18 +25,31 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     var questions = [
-      'What\'s your favorite color?',
-      'What\'s you favorite animal?',
+      {
+        'questionText': 'What\'s your favorite color?',
+        'answers': ['Red', 'Blue', 'Yellow', 'Green']
+      },
+      {
+        'questionText': 'What\'s your favorite animal?',
+        'answers': ['Lion', 'Dog', 'Duck', 'Cat', 'Bear']
+      },
+      {
+        'questionText': 'Who\'s your favorite instructor?',
+        'answers': ['Luis', 'Juan', 'Ana', 'Maria', 'Carla']
+      },
     ];
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(title: Text('Flutter Tutorial')),
           body: Column(
             children: <Widget>[
-              Question(questions[_questionIndex]),
-              Answer(_myAnswerQuestion),
-              Answer(_myAnswerQuestion),
-              Answer(_myAnswerQuestion),
+              Question(
+                questions[_questionIndex]['questionText'],
+              ),
+              ...(questions[_questionIndex]['answers'] as List<String>)
+                  .map((answer) {
+                return Answer(_myAnswerQuestion, answer);
+              }).toList(),
             ],
           )),
     );
