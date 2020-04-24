@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'question.dart';
 
 void main() => runApp(MyApp());
 
@@ -7,7 +8,6 @@ class MyApp extends StatefulWidget {
   State<StatefulWidget> createState() {
     return _MyAppState();
   }
-
 }
 
 class _MyAppState extends State<MyApp> {
@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
           appBar: AppBar(title: Text('Flutter Tutorial')),
           body: Column(
             children: <Widget>[
-              Text(questions[_questionIndex]),
+              Question(questions[_questionIndex]),
               RaisedButton(
                 child: Text('Answer 1'),
                 onPressed: _myAnswerQuestion,
