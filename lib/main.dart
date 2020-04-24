@@ -6,6 +6,21 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Text('HOLA!!!!'));
+    var questions = [
+      'What\'s your favorite color',
+      'What\'s you favorite animal',
+    ];
+    return MaterialApp(
+      home: Scaffold(
+          appBar: AppBar(title: Text('Flutter Tutorial')),
+          body: Column(
+            children: <Widget>[
+              Text('My Questions'),
+              RaisedButton(child: Text('Answer 1'), onPressed: null,),
+              RaisedButton(child: Text('Answer 2'), onPressed: null,),
+              RaisedButton(child: Text('Answer 3'), onPressed: null,),
+            ],
+          )),
+    );
   }
 }
