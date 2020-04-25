@@ -17,26 +17,53 @@ class _MyAppState extends State<MyApp> {
   final _questions = const [
     {
       'questionText': 'What\'s your favorite color?',
-      'answers': ['Red', 'Blue', 'Yellow', 'Green']
+      'answers': [
+        {'text': 'Red', 'score': 10},
+        {'text': 'Blue', 'score': 10},
+        {'text': 'Yellow', 'score': 10},
+        {'text': "Green", 'score': 10}
+      ]
     },
     {
       'questionText': 'What\'s your favorite animal?',
-      'answers': ['Lion', 'Dog', 'Duck', 'Cat', 'Bear']
+      'answers': [
+        {'text': 'Lion', 'score': 10},
+        {'text': 'Dog', 'score': 11},
+        {'text': 'Duck', 'score': 12},
+        {'text': 'Cat', 'score': 10},
+        {'text': 'Bear', 'score': 10}
+      ]
     },
     {
       'questionText': 'Who\'s your favorite instructor?',
-      'answers': ['Luis', 'Juan', 'Ana', 'Maria', 'Carla']
+      'answers': [
+        {'text': 'Luisa', 'score': 10},
+        {'text': 'Carlos', 'score': 10},
+        {'text': 'Maria', 'score': 20},
+        {'text': 'Maya', 'score': 10},
+        {'text': 'Sandro', 'score': 10}
+      ]
     },
   ];
-  int _questionIndex = 0;
 
-  void _myAnswerQuestion() {
+  int _questionIndex = 0;
+  int _totalScore = 0;
+
+  void _resetQuiz() {
+    setState(() {
+      _questionIndex = 0;
+      _totalScore = 0;
+    });
+  }
+
+  void _myAnswerQuestion(int score) {
+    _totalScore += score;
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
   }
 
-  // This widget is the root of your application.
+// This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -48,7 +75,7 @@ class _MyAppState extends State<MyApp> {
                 questionIndex: _questionIndex,
                 questions: _questions,
               )
-            : Result(),
+            : Result(_totalScore, _resetQuiz),
       ),
     );
   }
